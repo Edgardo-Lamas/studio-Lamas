@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://edgardolamas.github.io/studio-lamas",
+  "homepage": "https://Edgardo-Lamas.github.io/studio-Lamas",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

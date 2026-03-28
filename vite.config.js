@@ -4,5 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/studio-lamas/', // GitHub Pages repo name
+  base: '/studio-Lamas/', // GitHub Pages repo name
 })
