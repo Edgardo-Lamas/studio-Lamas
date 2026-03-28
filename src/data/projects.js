@@ -1,0 +1,92 @@
+export const projects = [
+  {
+    id: 'alcance-legal-penal',
+    name: 'Alcance Legal Penal',
+    subtitle: 'Sistema SaaS de consulta jurídica con IA',
+    category: 'legaltech',
+    categoryLabel: 'LegalTech',
+    bullets: [
+      'Búsqueda semántica sobre legislación y jurisprudencia penal argentina',
+      'Asistente con RAG sobre base de conocimiento legal actualizada',
+      'Gestión de usuarios, roles y suscripciones',
+      'Interfaz diseñada para el flujo real de trabajo de un abogado penalista',
+    ],
+    tags: ['React', 'Supabase', 'IA', 'RAG', 'SaaS', 'PostgreSQL'],
+    cta: 'Ver detalle',
+    href: null,
+    image: '/img/projects/alcance-legal-penal.png',
+    badge: null,
+    description:
+      'Plataforma SaaS que permite a abogados penalistas consultar legislación y jurisprudencia argentina mediante inteligencia artificial. El sistema procesa preguntas en lenguaje natural y devuelve respuestas fundamentadas con referencias legales reales, usando RAG sobre una base de conocimiento actualizada.',
+  },
+  {
+    id: 'criterio-termico',
+    name: 'Criterio Térmico',
+    subtitle: 'Motor de cálculo para sistemas de calefacción',
+    category: 'ingenieria',
+    categoryLabel: 'Ingeniería',
+    bullets: [
+      'Dimensionamiento de tuberías, radiadores, calderas y pisos radiantes',
+      'Diseño de recorrido de tuberías con lógica técnica incorporada',
+      'Generación automática de presupuestos de instalación',
+      'Manual de asistencia técnica integrado para instaladores',
+      'Exportación del proyecto a tecnología BIM',
+    ],
+    tags: ['React', 'Cálculo técnico', 'BIM', 'Ingeniería', 'Export'],
+    cta: 'Ver detalle',
+    href: null,
+    image: '/img/projects/criterio-termico.png',
+    badge: 'BIM Ready',
+    description:
+      'Aplicación web especializada para el diseño y cálculo de sistemas de calefacción. Permite dimensionar tuberías, radiadores, calderas y pisos radiantes, trazar recorridos, generar presupuestos automáticos y exportar el proyecto completo en formato BIM, integrándose al flujo de trabajo de arquitectos e ingenieros.',
+  },
+  {
+    id: 'gestion-sabri',
+    name: 'Gestión Sabri',
+    subtitle: 'Sistema de gestión operativa para PyME',
+    category: 'gestion',
+    categoryLabel: 'Gestión',
+    bullets: [
+      'Reemplazo completo de planillas Excel por sistema web',
+      'Módulos de clientes, pedidos, stock y operaciones',
+      'Dashboard en tiempo real con métricas clave del negocio',
+      'Acceso diferenciado por roles (admin, operador, solo lectura)',
+    ],
+    tags: ['React', 'Supabase', 'Dashboard', 'Gestión', 'PostgreSQL'],
+    cta: 'Ver detalle',
+    href: null,
+    image: '/img/projects/gestion-sabri.png',
+    badge: null,
+    description:
+      'Sistema de gestión a medida que reemplazó el flujo operativo basado en planillas Excel de una PyME. Centraliza clientes, pedidos, stock y operaciones en una sola aplicación web con roles y permisos, y un dashboard de métricas en tiempo real que permite tomar decisiones con información actualizada.',
+  },
+  {
+    id: 'sabiduria-corazon',
+    name: 'Sabiduría para el Corazón',
+    subtitle: 'Plataforma educativa de contenido teológico',
+    category: 'edtech',
+    categoryLabel: 'EdTech',
+    bullets: [
+      'Biblioteca digital con artículos, ensayos y recursos teológicos',
+      'Mapas interactivos con recorridos bíblicos geolocalizados',
+      'API integrada para juego interactivo orientado a jóvenes',
+      'E-commerce de literatura cristiana con catálogo y compra online',
+      'Integración con canal de YouTube para contenido audiovisual',
+    ],
+    tags: ['React', 'Geolocalización', 'API', 'E-commerce', 'EdTech'],
+    cta: 'Ver detalle',
+    href: null,
+    image: '/img/projects/sabiduria-corazon.png',
+    badge: null,
+    description:
+      'Plataforma educativa completa para el estudio de contenido teológico. Combina una biblioteca digital, mapas con recorridos bíblicos geolocalizados, una API para juego interactivo, e-commerce de libros y recursos, e integración con YouTube — todo en un mismo entorno diseñado para distintos perfiles de usuario.',
+  },
+]
+
+export const categories = [
+  { id: 'all', label: 'Todos' },
+  { id: 'legaltech', label: 'LegalTech' },
+  { id: 'ingenieria', label: 'Ingeniería' },
+  { id: 'gestion', label: 'Gestión' },
+  { id: 'edtech', label: 'EdTech' },
+]
