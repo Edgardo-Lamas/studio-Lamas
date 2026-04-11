@@ -82,7 +82,7 @@ export default function Contact() {
                   edgardo@studiolamas.dev
                 </a>
                 <a
-                  href="https://wa.me/5491100000000"
+                  href="https://wa.me/5491152604137"
                   target="_blank" rel="noopener noreferrer"
                   style={{
                     display: 'flex', alignItems: 'center', gap: '0.75rem',
@@ -96,7 +96,7 @@ export default function Contact() {
                   WhatsApp
                 </a>
                 <a
-                  href="https://linkedin.com/in/edgardolamas"
+                  href="https://www.linkedin.com/in/edgardo-lamas-392668273/"
                   target="_blank" rel="noopener noreferrer"
                   style={{
                     display: 'flex', alignItems: 'center', gap: '0.75rem',
