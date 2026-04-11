@@ -99,6 +99,7 @@ function ProjectModal({ project, onClose }) {
               <img
                 src={url(project.image)}
                 alt={project.name}
+                loading="lazy"
                 style={{ width: '100%', display: 'block', objectFit: 'cover' }}
                 onError={e => { e.currentTarget.parentElement.style.display = 'none' }}
               />
@@ -179,6 +180,7 @@ function ProjectCard({ project, onClick, index }) {
             <img
               src={url(project.image)}
               alt={project.name}
+              loading="lazy"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           )}
