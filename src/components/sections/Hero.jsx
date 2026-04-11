@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import LogoSVG from '../ui/LogoSVG'
 import OrbsBackground from '../ui/OrbsBackground'
+// LogoSVG se usa solo en el overlay del video
 
 const base = import.meta.env.BASE_URL
 
@@ -71,46 +72,19 @@ export default function Hero() {
       }} />
 
       {/* Contenido — dos columnas */}
-      <div style={{
+      <div className="hero-grid" style={{
         maxWidth: '72rem',
         margin: '0 auto',
         padding: '4rem 1.5rem',
         width: '100%',
         position: 'relative',
         zIndex: 1,
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '3rem',
-        alignItems: 'center',
       }}>
 
         {/* ── Columna izquierda: texto ── */}
         <motion.div variants={container} initial="hidden" animate="show">
 
           {/* Logo + nombre */}
-          <motion.div variants={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem' }}>
-            <motion.span
-              whileHover={{ rotate: 8, scale: 1.1, filter: 'drop-shadow(0 0 12px rgba(201,168,76,0.65))' }}
-              transition={{ type: 'spring', stiffness: 280, damping: 12 }}
-              style={{ display: 'inline-flex' }}
-            >
-              <LogoSVG size={32} />
-            </motion.span>
-            <div>
-              <p style={{
-                fontSize: '0.68rem', fontWeight: 700,
-                color: 'var(--gold)',
-                textTransform: 'uppercase', letterSpacing: '0.12em',
-                marginBottom: '0.1rem',
-              }}>
-                Studio Lamas
-              </p>
-              <p style={{ fontSize: '0.68rem', color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
-                Desarrollo Digital
-              </p>
-            </div>
-          </motion.div>
-
           {/* Título */}
           <motion.div variants={item} style={{ marginBottom: '1.75rem' }}>
             <h1 style={{
@@ -284,6 +258,24 @@ export default function Hero() {
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
         />
       </motion.div>
+
+      <style>{`
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          align-items: center;
+        }
+        @media (max-width: 768px) {
+          .hero-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+          .hero-grid h1 {
+            font-size: clamp(1.9rem, 8vw, 2.6rem) !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

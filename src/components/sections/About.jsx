@@ -1,6 +1,7 @@
 import ScrollReveal from '../ui/ScrollReveal'
-import LogoSVG from '../ui/LogoSVG'
 import { stack } from '../../data/services'
+
+const base = import.meta.env.BASE_URL
 
 export default function About() {
   return (
@@ -8,24 +9,35 @@ export default function About() {
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
 
         <div className="about-grid">
-          {/* Avatar / Logo */}
+
+          {/* Foto */}
           <ScrollReveal>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div style={{
-                width: '140px', height: '140px',
-                borderRadius: '50%',
-                background: 'var(--nav-bg)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.4rem',
-                boxShadow: '0 0 0 4px rgba(201,162,39,0.2), 0 0 0 8px rgba(201,162,39,0.08)',
-              }}>
-                <LogoSVG size={40} />
-                <span style={{ color: '#fff', fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.12em', marginTop: '0.2rem' }}>
-                  EL
-                </span>
+              <div style={{ position: 'relative', display: 'inline-block' }}>
+                <div style={{
+                  width: '180px',
+                  height: '180px',
+                  borderRadius: '1.25rem',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(201,168,76,0.25)',
+                  boxShadow: '0 0 60px rgba(74,127,165,0.15), 0 0 120px rgba(201,168,76,0.08)',
+                }}>
+                  <img
+                    src={`${base}img/capturas/Edgardo/lamas.png`}
+                    alt="Edgardo Lamas"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+                {/* Línea dorada lateral */}
+                <div style={{
+                  position: 'absolute',
+                  top: '10%', bottom: '10%',
+                  right: '-1.1rem',
+                  width: '2px',
+                  background: 'linear-gradient(to bottom, transparent, var(--gold), transparent)',
+                  opacity: 0.4,
+                  borderRadius: '1px',
+                }} />
               </div>
             </div>
           </ScrollReveal>
@@ -35,20 +47,23 @@ export default function About() {
             <ScrollReveal>
               <p className="section-label">Sobre mí</p>
               <h2 className="section-title">Edgardo Lamas</h2>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
                 La Plata · Buenos Aires · Argentina
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
-              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1rem' }}>
-                Desarrollador web especializado en sistemas para estudios jurídicos y PyMEs.
-                Construyo herramientas que las personas realmente usan: no demos que quedan en un cajón,
-                sino aplicaciones que reemplazan procesos reales.
+              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.85, marginBottom: '1rem' }}>
+                A los 52 años tomé una decisión que cambió todo: reinventarme. Sin red de contención,
+                sin atajos. Me metí de lleno en el mundo digital y no paré más.
+                Me formé en <em style={{ color: 'var(--text-primary)' }}>Community Management, Marketing Digital, Desarrollo Web e IA</em> en
+                academias de Argentina, España y Estados Unidos.
               </p>
-              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1.75rem' }}>
-                Trabajo con React, Supabase, PostgreSQL e IA aplicada. Menos buzzword, más soluciones concretas.
-                Cada proyecto arranca con una pregunta: <em style={{ color: 'var(--text-primary)' }}>"¿qué problema real resuelve esto?"</em>
+              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.85, marginBottom: '1.75rem' }}>
+                Esa trayectoria me dio algo que no se enseña en ninguna academia:
+                entender el problema antes de escribir una línea de código.
+                Hoy construyo sistemas web para estudios jurídicos y PyMEs —
+                herramientas que <em style={{ color: 'var(--gold)' }}>la gente realmente usa</em>, no proyectos que quedan en un cajón.
               </p>
             </ScrollReveal>
 
