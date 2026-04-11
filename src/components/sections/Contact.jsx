@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import ScrollReveal from '../ui/ScrollReveal'
 
-// Reemplazá FORMSPREE_ID con tu ID de formspree.io (ej: xpzvjqkb)
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'
+const SUPABASE_URL = 'https://ejrlncvtkrgzafckpmph.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqcmxuY3Z0a3JnemFmY2twbXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NzgyMzEsImV4cCI6MjA5MTQ1NDIzMX0.0_WhP3awdwKlpFgG_XCquGfmeh5p4ceSQ5J0kjijgGE'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -14,12 +14,16 @@ export default function Contact() {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/send-contact`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        },
         body: JSON.stringify(form),
       })
-      if (res.ok) {
+      const data = await res.json()
+      if (res.ok && data.ok) {
         setStatus('success')
         setForm({ name: '', email: '', message: '' })
       } else {
