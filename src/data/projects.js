@@ -13,11 +13,32 @@ export const projects = [
     ],
     tags: ['React', 'Supabase', 'IA', 'RAG', 'SaaS', 'PostgreSQL'],
     cta: 'Ver detalle',
-    href: null,
-    image: null,
+    href: 'https://edgardo-lamas.github.io/Alcance-Legal-Penal/',
+    image: 'img/capturas/alcace-legal-penal/alcance-1.png',
     badge: null,
     description:
       'Plataforma SaaS que permite a abogados penalistas consultar legislación y jurisprudencia argentina mediante inteligencia artificial. El sistema procesa preguntas en lenguaje natural y devuelve respuestas fundamentadas con referencias legales reales, usando RAG sobre una base de conocimiento actualizada.',
+  },
+  {
+    id: 'legal-intelligence-systems',
+    name: 'Legal Intelligence Systems',
+    subtitle: 'Plataforma de formación en IA para abogados',
+    category: 'edtech',
+    categoryLabel: 'EdTech',
+    bullets: [
+      'Programa completo de 7 módulos sobre IA aplicada al derecho',
+      'Ingeniería de prompts jurídicos, RAG y agentes de IA',
+      'Gestión de práctica independiente con automatización',
+      'Ecosistema de herramientas IA para el ejercicio profesional',
+      'Visualizaciones interactivas y mapas de contenido dinámicos',
+    ],
+    tags: ['React', 'EdTech', 'IA', 'LegalTech', 'Formación'],
+    cta: 'Ver detalle',
+    href: 'https://edgardo-lamas.github.io/Legal-Intelligence-System/',
+    image: 'img/capturas/legal-intelligence-systems/legal-1.png',
+    badge: 'IA aplicada',
+    description:
+      'Plataforma educativa especializada en inteligencia artificial para abogados. Estructura un recorrido de formación completo — desde fundamentos de IA hasta automatización de la práctica jurídica — con módulos interactivos, visualizaciones de contenido y herramientas diseñadas para el ejercicio profesional real.',
   },
   {
     id: 'criterio-termico',
@@ -56,7 +77,7 @@ export const projects = [
     tags: ['React', 'Supabase', 'Dashboard', 'Gestión', 'PostgreSQL'],
     cta: 'Ver detalle',
     href: null,
-    image: null,
+    image: 'img/capturas/sabri/sabr-1.png',
     badge: null,
     description:
       'Sistema de gestión a medida que reemplazó el flujo operativo basado en planillas Excel de una PyME. Centraliza clientes, pedidos, stock y operaciones en una sola aplicación web con roles y permisos, y un dashboard de métricas en tiempo real que permite tomar decisiones con información actualizada.',
@@ -83,12 +104,35 @@ export const projects = [
     description:
       'Plataforma educativa completa para el estudio de contenido teológico. Combina una biblioteca digital, mapas con recorridos bíblicos geolocalizados, una API para juego interactivo, e-commerce de libros y recursos, e integración con YouTube — todo en un mismo entorno diseñado para distintos perfiles de usuario.',
   },
+  {
+    id: 'lanik',
+    name: 'LaNik',
+    subtitle: 'Landing page para marca de gorras artesanales',
+    category: 'ecommerce',
+    categoryLabel: 'E-commerce',
+    bullets: [
+      'Sitio vitrina con catálogo de productos y galería fotográfica',
+      'Sección historia de marca y proceso artesanal',
+      'Contacto directo vía WhatsApp e Instagram',
+      'Diseño oscuro con paleta terracota y crema — identidad visual propia',
+      'Analytics GA4 con seguimiento de conversiones',
+    ],
+    tags: ['HTML', 'CSS', 'JavaScript', 'GA4', 'E-commerce'],
+    cta: 'Ver sitio',
+    href: 'https://edgardo-lamas.github.io/LaNik/',
+    image: 'img/capturas/LaNik/lanik-1.png',
+    video: 'img/capturas/LaNik/LaNik.mp4',
+    badge: null,
+    description:
+      'Landing page para LaNik, marca de gorras tejidas artesanalmente en Buenos Aires. El sitio presenta el catálogo de productos, la historia de la marca y el proceso artesanal, con contacto directo vía WhatsApp. Desarrollado en HTML/CSS/JS puro para máxima performance y cero dependencias.',
+  },
 ]
 
 export const categories = [
   { id: 'all', label: 'Todos' },
   { id: 'legaltech', label: 'LegalTech' },
+  { id: 'edtech', label: 'EdTech' },
   { id: 'ingenieria', label: 'Ingeniería' },
   { id: 'gestion', label: 'Gestión' },
-  { id: 'edtech', label: 'EdTech' },
+  { id: 'ecommerce', label: 'E-commerce' },
 ]
