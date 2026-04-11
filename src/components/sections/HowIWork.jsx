@@ -3,7 +3,7 @@ import { steps } from '../../data/services'
 
 export default function HowIWork() {
   return (
-    <section id="proceso" style={{ background: 'var(--dark-bg)', padding: '5rem 0' }}>
+    <section id="proceso" style={{ background: '#080f1e', padding: '5rem 0' }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
 
         <ScrollReveal>

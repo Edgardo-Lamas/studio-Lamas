@@ -14,7 +14,7 @@ export const projects = [
     tags: ['React', 'Supabase', 'IA', 'RAG', 'SaaS', 'PostgreSQL'],
     cta: 'Ver detalle',
     href: null,
-    image: '/img/projects/alcance-legal-penal.png',
+    image: null,
     badge: null,
     description:
       'Plataforma SaaS que permite a abogados penalistas consultar legislación y jurisprudencia argentina mediante inteligencia artificial. El sistema procesa preguntas en lenguaje natural y devuelve respuestas fundamentadas con referencias legales reales, usando RAG sobre una base de conocimiento actualizada.',
@@ -35,7 +35,8 @@ export const projects = [
     tags: ['React', 'Cálculo técnico', 'BIM', 'Ingeniería', 'Export'],
     cta: 'Ver detalle',
     href: null,
-    image: '/img/projects/criterio-termico.png',
+    image: 'img/capturas/criterio termico/criterio-1.png',
+    video: 'img/projects/criterio-termico.mp4',
     badge: 'BIM Ready',
     description:
       'Aplicación web especializada para el diseño y cálculo de sistemas de calefacción. Permite dimensionar tuberías, radiadores, calderas y pisos radiantes, trazar recorridos, generar presupuestos automáticos y exportar el proyecto completo en formato BIM, integrándose al flujo de trabajo de arquitectos e ingenieros.',
@@ -55,7 +56,7 @@ export const projects = [
     tags: ['React', 'Supabase', 'Dashboard', 'Gestión', 'PostgreSQL'],
     cta: 'Ver detalle',
     href: null,
-    image: '/img/projects/gestion-sabri.png',
+    image: null,
     badge: null,
     description:
       'Sistema de gestión a medida que reemplazó el flujo operativo basado en planillas Excel de una PyME. Centraliza clientes, pedidos, stock y operaciones en una sola aplicación web con roles y permisos, y un dashboard de métricas en tiempo real que permite tomar decisiones con información actualizada.',
@@ -76,7 +77,8 @@ export const projects = [
     tags: ['React', 'Geolocalización', 'API', 'E-commerce', 'EdTech'],
     cta: 'Ver detalle',
     href: null,
-    image: '/img/projects/sabiduria-corazon.png',
+    image: 'img/capturas/sabiduria/captura-1.png',
+    video: 'img/capturas/sabiduria/grabacion.mov',
     badge: null,
     description:
       'Plataforma educativa completa para el estudio de contenido teológico. Combina una biblioteca digital, mapas con recorridos bíblicos geolocalizados, una API para juego interactivo, e-commerce de libros y recursos, e integración con YouTube — todo en un mismo entorno diseñado para distintos perfiles de usuario.',

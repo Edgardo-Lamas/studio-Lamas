@@ -26,12 +26,12 @@ export default function Navbar() {
         top: 0, left: 0, right: 0,
         zIndex: 100,
         background: scrolled
-          ? 'rgba(26,34,52,0.97)'
+          ? 'rgba(8,15,30,0.95)'
           : 'var(--nav-bg)',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
         transition: 'background 0.3s, box-shadow 0.3s',
-        boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.18)' : 'none',
+        boxShadow: scrolled ? '0 2px 32px rgba(0,0,0,0.4)' : 'none',
       }}
     >
       <div style={{

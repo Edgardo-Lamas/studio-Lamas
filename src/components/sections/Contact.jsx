@@ -33,12 +33,12 @@ export default function Contact() {
   const inputStyle = {
     width: '100%',
     padding: '0.75rem 1rem',
-    border: '1.5px solid #e5e7eb',
+    border: '1.5px solid rgba(255,255,255,0.08)',
     borderRadius: '0.5rem',
     fontSize: '0.9rem',
     fontFamily: 'inherit',
     color: 'var(--text-primary)',
-    background: 'var(--bg-primary)',
+    background: '#1e293b',
     outline: 'none',
     transition: 'border-color 0.2s',
   }

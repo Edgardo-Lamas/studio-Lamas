@@ -1,6 +1,10 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import ScrollReveal from '../ui/ScrollReveal'
 import { projects, categories } from '../../data/projects'
+
+const base = import.meta.env.BASE_URL
+const url = (path) => path ? `${base}${path}` : null
 
 function ProjectModal({ project, onClose }) {
   if (!project) return null
@@ -19,16 +23,16 @@ function ProjectModal({ project, onClose }) {
       <div
         onClick={e => e.stopPropagation()}
         style={{
-          background: 'var(--bg-secondary)',
+          background: '#1e293b',
           borderRadius: '1.25rem',
           padding: '2.5rem',
-          maxWidth: '640px',
+          maxWidth: '760px',
           width: '100%',
           maxHeight: '90vh',
           overflowY: 'auto',
-          boxShadow: '0 24px 64px rgba(0,0,0,0.25)',
+          boxShadow: '0 24px 64px rgba(0,0,0,0.6)',
           animation: 'slideUp 0.3s ease',
-          border: '1px solid #e5e7eb',
+          border: '1px solid rgba(255,255,255,0.08)',
         }}
       >
         {/* Header */}
@@ -72,25 +76,33 @@ function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
-        {/* Imagen */}
-        {project.image && (
+        {/* Video o imagen en el modal */}
+        {(project.video || project.image) && (
           <div style={{
             borderRadius: '0.75rem',
             overflow: 'hidden',
             marginBottom: '1.5rem',
-            border: '1px solid #e5e7eb',
-            background: '#f5f5f5',
-            minHeight: '200px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            border: '1px solid rgba(255,255,255,0.08)',
+            background: '#0d1117',
           }}>
-            <img
-              src={project.image}
-              alt={project.name}
-              style={{ width: '100%', display: 'block', objectFit: 'cover' }}
-              onError={e => { e.currentTarget.parentElement.style.display = 'none' }}
-            />
+            {project.video ? (
+              <video
+                src={url(project.video)}
+                style={{ width: '100%', display: 'block', maxHeight: '420px', objectFit: 'contain', background: '#000' }}
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            ) : (
+              <img
+                src={url(project.image)}
+                alt={project.name}
+                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+                onError={e => { e.currentTarget.parentElement.style.display = 'none' }}
+              />
+            )}
           </div>
         )}
 
@@ -142,36 +154,49 @@ function ProjectModal({ project, onClose }) {
 function ProjectCard({ project, onClick, index }) {
   return (
     <ScrollReveal delay={index * 100}>
-      <article
+      <motion.article
         className="card card-gold"
         style={{ cursor: 'pointer', height: '100%', display: 'flex', flexDirection: 'column' }}
         onClick={() => onClick(project)}
+        whileHover={{ y: -6, transition: { duration: 0.22, ease: 'easeOut' } }}
+        whileTap={{ scale: 0.98 }}
       >
-        {/* Imagen placeholder */}
+        {/* Preview — video si existe, imagen si no */}
         <div style={{
           borderRadius: '0.625rem',
           overflow: 'hidden',
           marginBottom: '1.25rem',
-          background: 'linear-gradient(135deg, #f0f4f8 0%, #e8edf2 100%)',
-          minHeight: '160px',
+          background: 'linear-gradient(135deg, #1a2744 0%, #0f1f3a 100%)',
+          height: '160px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
-          border: '1px solid #eee',
+          border: '1px solid rgba(255,255,255,0.06)',
         }}>
-          <img
-            src={project.image}
-            alt={project.name}
-            style={{ width: '100%', height: '160px', objectFit: 'cover', display: 'block' }}
-            onError={e => {
-              e.currentTarget.style.display = 'none'
-              e.currentTarget.nextSibling.style.display = 'flex'
-            }}
-          />
-          {/* Fallback sin imagen */}
+          {/* Imagen siempre visible */}
+          {project.image && (
+            <img
+              src={url(project.image)}
+              alt={project.name}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          )}
+          {/* Video encima — aparece al hacer hover */}
+          {project.video && (
+            <video
+              src={url(project.video)}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0, transition: 'opacity 0.3s ease' }}
+              muted
+              loop
+              playsInline
+              onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.play() }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = 0; e.currentTarget.pause(); e.currentTarget.currentTime = 0 }}
+            />
+          )}
+          {/* Fallback sin media */}
           <div style={{
-            display: 'none',
+            display: project.video ? 'none' : 'none',
             flexDirection: 'column',
             alignItems: 'center',
             gap: '0.4rem',
@@ -224,7 +249,7 @@ function ProjectCard({ project, onClick, index }) {
           </ul>
 
           {/* Footer */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid #f0f0f0' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
               {project.tags.slice(0, 3).map(tag => (
                 <span key={tag} className="tag" style={{ fontSize: '0.62rem', padding: '0.15rem 0.45rem' }}>{tag}</span>
@@ -235,7 +260,7 @@ function ProjectCard({ project, onClick, index }) {
             </span>
           </div>
         </div>
-      </article>
+      </motion.article>
     </ScrollReveal>
   )
 }

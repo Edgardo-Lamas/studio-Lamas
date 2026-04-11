@@ -1,35 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
-/* ── Variables de diseño ────────────────────────────────── */
+/* ── Variables de diseño — Dark mode ───────────────────── */
 :root {
-  --bg-primary:   #fafafa;
-  --bg-secondary: #ffffff;
-  --nav-bg:       #1a2234;
-  --nav-hover:    #243044;
-  --accent:       #4a7c94;
-  --accent-light: #6a9cb4;
-  --text-primary:   #1a1a1a;
-  --text-secondary: #4a4a4a;
-  --text-muted:     #7a7a7a;
-  --text-nav:       #d4d4d4;
+  /* Fondos alternados */
+  --bg-primary:   #0d1117;   /* hero, proyectos, contacto */
+  --bg-secondary: #0f1923;   /* servicios, sobre mí */
+  --bg-card:      #161f2e;   /* cards */
+  --bg-card-hover:#1c2a3e;
+
+  /* Navegación */
+  --nav-bg:       #080d14;
+  --nav-hover:    #161f2e;
+
+  /* Acentos */
+  --accent:       #4a7fa5;
+  --accent-light: #6b9eb8;
+
+  /* Texto */
+  --text-primary:   #f0f4f8;
+  --text-secondary: #8fa8bf;
+  --text-muted:     #566878;
+  --text-nav:       #8fa8bf;
   --text-nav-active:#ffffff;
-  --gold:         #c9a227;
-  --signature:    #64748b;
-  --tagline:      #3f4f65;
-  --dark-bg:      #0f172a;
-  --orange:       #f97316;
+
+  /* Bordes */
+  --border:       rgba(255,255,255,0.06);
+  --border-hover: rgba(74,127,165,0.45);
+
+  /* Marca */
+  --gold:         #c9a84c;
+  --gold-hover:   #d4b660;
+  --signature:    #566878;
+  --tagline:      #6b9e9e;
 }
 
 /* ── Reset y base ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; } /* Lenis maneja el scroll suave */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
 }
 
 /* ── Scroll reveal ──────────────────────────────────────── */
@@ -106,20 +121,21 @@ body {
 
 /* ── Cards ──────────────────────────────────────────────── */
 .card {
-  background: var(--bg-secondary);
-  border: 1px solid #e5e7eb;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 1.75rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(74, 124, 148, 0.13);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
   border-color: var(--accent);
+  background: var(--bg-card-hover);
 }
 .card-gold:hover {
-  box-shadow: 0 12px 32px rgba(201, 162, 39, 0.13);
   border-color: var(--gold);
+  box-shadow: 0 12px 40px rgba(201,162,39,0.15);
 }
 
 /* ── Secciones ──────────────────────────────────────────── */
