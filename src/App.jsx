@@ -4,6 +4,7 @@ import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
 import Projects from './components/sections/Projects'
+import LegalEcosystem from './components/sections/LegalEcosystem'
 import HowIWork from './components/sections/HowIWork'
 import About from './components/sections/About'
 import Testimonials from './components/sections/Testimonials'
@@ -18,6 +19,7 @@ export default function App() {
         <Hero />
         <Services />
         <Projects />
+        <LegalEcosystem />
         <HowIWork />
         <About />
         <Testimonials />
