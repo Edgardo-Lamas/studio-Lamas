@@ -22,7 +22,7 @@ const nodes = [
     label: 'Aprende a usarla',
     name: 'Legal Intelligence Systems',
     desc: 'Plataforma de formación en IA aplicada al derecho, para abogados en ejercicio.',
-    href: 'https://edgardo-lamas.github.io/Legal-Intelligence-System/',
+    href: 'https://legal-intelligence-system-wine.vercel.app/',
     color: 'var(--tagline)',
     icon: '🎓',
   },

@@ -34,7 +34,7 @@ export const projects = [
     ],
     tags: ['React', 'EdTech', 'IA', 'LegalTech', 'Formación'],
     cta: 'Ver detalle',
-    href: 'https://edgardo-lamas.github.io/Legal-Intelligence-System/',
+    href: 'https://legal-intelligence-system-wine.vercel.app/',
     image: 'img/capturas/legal-intelligence-systems/legal-1.png',
     badge: 'IA aplicada',
     description:
