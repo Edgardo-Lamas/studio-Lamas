@@ -63,7 +63,7 @@ export default function Contact() {
             <ScrollReveal delay={150}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 <a
-                  href="mailto:edgardo@studiolamas.dev"
+                  href="mailto:edgardolamas2000@gmail.com"
                   style={{
                     display: 'flex', alignItems: 'center', gap: '0.75rem',
                     textDecoration: 'none', color: 'var(--text-secondary)',
@@ -73,7 +73,7 @@ export default function Contact() {
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                 >
                   <span style={{ fontSize: '1.1rem' }}>✉</span>
-                  edgardo@studiolamas.dev
+                  edgardolamas2000@gmail.com
                 </a>
                 <a
                   href="https://wa.me/5491152604137"
@@ -181,7 +181,7 @@ export default function Contact() {
                   fontSize: '0.9rem',
                   color: '#dc2626',
                 }}>
-                  Hubo un error. Escribime directamente a edgardo@studiolamas.dev
+                  Hubo un error. Escribime directamente a edgardolamas2000@gmail.com
                 </div>
               )}
 
