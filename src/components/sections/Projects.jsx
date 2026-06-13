@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import ScrollReveal from '../ui/ScrollReveal'
 import { projects, categories } from '../../data/projects'
 
@@ -154,21 +154,22 @@ function ProjectModal({ project, onClose }) {
 
 function ProjectCard({ project, onClick, index }) {
   const cardRef = useRef(null)
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
-  const [hovering, setHovering] = useState(false)
+  const rotX = useMotionValue(0)
+  const rotY = useMotionValue(0)
+  const sX = useSpring(rotX, { stiffness: 300, damping: 30, mass: 0.5 })
+  const sY = useSpring(rotY, { stiffness: 300, damping: 30, mass: 0.5 })
 
-  const onMouseMove = (e) => {
+  const handleMouseMove = (e) => {
     const rect = cardRef.current.getBoundingClientRect()
     const cx = rect.left + rect.width / 2
     const cy = rect.top + rect.height / 2
-    const dx = (e.clientX - cx) / (rect.width / 2)
-    const dy = (e.clientY - cy) / (rect.height / 2)
-    setTilt({ x: -dy * 7, y: dx * 7 })
+    rotX.set(-((e.clientY - cy) / (rect.height / 2)) * 7)
+    rotY.set(((e.clientX - cx) / (rect.width / 2)) * 7)
   }
 
-  const onMouseLeave = () => {
-    setTilt({ x: 0, y: 0 })
-    setHovering(false)
+  const handleMouseLeave = () => {
+    rotX.set(0)
+    rotY.set(0)
   }
 
   return (
@@ -182,23 +183,20 @@ function ProjectCard({ project, onClick, index }) {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          transformStyle: 'preserve-3d',
-          perspective: '800px',
-          position: 'relative',
-          overflow: 'hidden',
+          transformPerspective: 800,
+          rotateX: sX,
+          rotateY: sY,
+        }}
+        initial="rest"
+        whileHover="hover"
+        whileTap={{ scale: 0.98 }}
+        variants={{
+          rest: { y: 0, scale: 1 },
+          hover: { y: -6, scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } },
         }}
         onClick={() => onClick(project)}
-        onMouseMove={onMouseMove}
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={onMouseLeave}
-        animate={{
-          rotateX: tilt.x,
-          rotateY: tilt.y,
-          scale: hovering ? 1.02 : 1,
-          y: hovering ? -6 : 0,
-        }}
-        transition={{ duration: 0.18, ease: 'easeOut' }}
-        whileTap={{ scale: 0.98 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
       >
         {/* Preview */}
         <div style={{
@@ -222,7 +220,7 @@ function ProjectCard({ project, onClick, index }) {
           {project.video && (
             <video
               src={url(project.video)}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0, transition: 'opacity 0.35s ease' }}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0, transition: 'opacity 0.35s ease', zIndex: 1 }}
               muted loop playsInline
               onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.play() }}
               onMouseLeave={e => { e.currentTarget.style.opacity = 0; e.currentTarget.pause(); e.currentTarget.currentTime = 0 }}
@@ -236,32 +234,37 @@ function ProjectCard({ project, onClick, index }) {
               fontSize: '0.6rem', fontWeight: 700,
               padding: '0.2rem 0.5rem', borderRadius: '9999px',
               letterSpacing: '0.06em', textTransform: 'uppercase',
+              zIndex: 3,
             }}>
               ★ {project.badge}
             </span>
           )}
 
-          {/* Hover reveal overlay */}
+          {/* Hover reveal overlay — variant propagated from whileHover on article */}
           <motion.div
+            variants={{
+              rest: { opacity: 0 },
+              hover: { opacity: 1, transition: { duration: 0.22 } },
+            }}
             style={{
               position: 'absolute', inset: 0,
               background: 'linear-gradient(to top, rgba(8,13,20,0.92) 0%, rgba(8,13,20,0.4) 60%, transparent 100%)',
               display: 'flex', alignItems: 'flex-end',
               padding: '0.85rem',
+              pointerEvents: 'none',
+              zIndex: 2,
             }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: hovering ? 1 : 0 }}
-            transition={{ duration: 0.22 }}
           >
             <motion.span
+              variants={{
+                rest: { y: 8, opacity: 0 },
+                hover: { y: 0, opacity: 1, transition: { duration: 0.22, delay: 0.05 } },
+              }}
               style={{
                 fontSize: '0.8rem', fontWeight: 600,
                 color: '#fff', letterSpacing: '0.04em',
                 display: 'flex', alignItems: 'center', gap: '0.35rem',
               }}
-              initial={{ y: 8, opacity: 0 }}
-              animate={{ y: hovering ? 0 : 8, opacity: hovering ? 1 : 0 }}
-              transition={{ duration: 0.22, delay: 0.05 }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
@@ -302,9 +305,11 @@ function ProjectCard({ project, onClick, index }) {
               ))}
             </div>
             <motion.span
+              variants={{
+                rest: { x: 0 },
+                hover: { x: 3, transition: { duration: 0.18 } },
+              }}
               style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--accent)', whiteSpace: 'nowrap', marginLeft: '0.5rem' }}
-              animate={{ x: hovering ? 3 : 0 }}
-              transition={{ duration: 0.18 }}
             >
               Ver más →
             </motion.span>
