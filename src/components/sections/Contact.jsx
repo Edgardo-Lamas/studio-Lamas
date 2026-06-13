@@ -48,7 +48,7 @@ export default function Contact() {
         <div className="contact-grid">
           {/* Col izquierda — invitación */}
           <div>
-            <ScrollReveal>
+            <ScrollReveal direction="left">
               <p className="section-label">Contacto</p>
               <h2 className="section-title">Contame tu idea</h2>
               <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem' }}>
@@ -117,7 +117,7 @@ export default function Contact() {
           </div>
 
           {/* Col derecha — formulario */}
-          <ScrollReveal delay={200}>
+          <ScrollReveal delay={200} direction="right">
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>

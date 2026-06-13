@@ -6,7 +6,7 @@ export default function HowIWork() {
     <section id="proceso" style={{ background: '#080f1e', padding: '5rem 0' }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        <ScrollReveal>
+        <ScrollReveal direction="left">
           <p className="section-label" style={{ color: 'var(--accent-light)' }}>Metodología</p>
           <h2 className="section-title" style={{ color: '#f1f5f9' }}>Cómo trabajo los proyectos</h2>
           <p className="section-subtitle" style={{ color: '#94a3b8' }}>
@@ -17,7 +17,7 @@ export default function HowIWork() {
         {/* Timeline desktop */}
         <div className="steps-grid">
           {steps.map((step, i) => (
-            <ScrollReveal key={step.number} delay={i * 130}>
+            <ScrollReveal key={step.number} delay={i * 140} direction="scale">
               <div className="step-card">
                 {/* Número */}
                 <div style={{

@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
+import CustomCursor from './components/ui/CustomCursor'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
@@ -14,6 +15,7 @@ import './index.css'
 export default function App() {
   return (
     <>
+      <CustomCursor />
       <Navbar />
       <main>
         <Hero />

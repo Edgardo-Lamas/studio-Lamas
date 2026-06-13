@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import ScrollReveal from '../ui/ScrollReveal'
 import { projects, categories } from '../../data/projects'
@@ -153,29 +153,64 @@ function ProjectModal({ project, onClose }) {
 }
 
 function ProjectCard({ project, onClick, index }) {
+  const cardRef = useRef(null)
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [hovering, setHovering] = useState(false)
+
+  const onMouseMove = (e) => {
+    const rect = cardRef.current.getBoundingClientRect()
+    const cx = rect.left + rect.width / 2
+    const cy = rect.top + rect.height / 2
+    const dx = (e.clientX - cx) / (rect.width / 2)
+    const dy = (e.clientY - cy) / (rect.height / 2)
+    setTilt({ x: -dy * 7, y: dx * 7 })
+  }
+
+  const onMouseLeave = () => {
+    setTilt({ x: 0, y: 0 })
+    setHovering(false)
+  }
+
   return (
     <ScrollReveal delay={index * 100}>
       <motion.article
+        ref={cardRef}
         className="card card-gold"
-        style={{ cursor: 'pointer', height: '100%', display: 'flex', flexDirection: 'column' }}
+        data-hover
+        style={{
+          cursor: 'pointer',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          transformStyle: 'preserve-3d',
+          perspective: '800px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
         onClick={() => onClick(project)}
-        whileHover={{ y: -6, transition: { duration: 0.22, ease: 'easeOut' } }}
+        onMouseMove={onMouseMove}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={onMouseLeave}
+        animate={{
+          rotateX: tilt.x,
+          rotateY: tilt.y,
+          scale: hovering ? 1.02 : 1,
+          y: hovering ? -6 : 0,
+        }}
+        transition={{ duration: 0.18, ease: 'easeOut' }}
         whileTap={{ scale: 0.98 }}
       >
-        {/* Preview — video si existe, imagen si no */}
+        {/* Preview */}
         <div style={{
           borderRadius: '0.625rem',
           overflow: 'hidden',
           marginBottom: '1.25rem',
           background: 'linear-gradient(135deg, #1a2744 0%, #0f1f3a 100%)',
           height: '160px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
           position: 'relative',
           border: '1px solid rgba(255,255,255,0.06)',
+          flexShrink: 0,
         }}>
-          {/* Imagen siempre visible */}
           {project.image && (
             <img
               src={url(project.image)}
@@ -184,32 +219,15 @@ function ProjectCard({ project, onClick, index }) {
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           )}
-          {/* Video encima — aparece al hacer hover */}
           {project.video && (
             <video
               src={url(project.video)}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0, transition: 'opacity 0.3s ease' }}
-              muted
-              loop
-              playsInline
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0, transition: 'opacity 0.35s ease' }}
+              muted loop playsInline
               onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.play() }}
               onMouseLeave={e => { e.currentTarget.style.opacity = 0; e.currentTarget.pause(); e.currentTarget.currentTime = 0 }}
             />
           )}
-          {/* Fallback sin media */}
-          <div style={{
-            display: project.video ? 'none' : 'none',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.4rem',
-            padding: '2rem',
-            height: '160px',
-            width: '100%',
-            justifyContent: 'center',
-          }}>
-            <span style={{ fontSize: '2rem', opacity: 0.3 }}>🖥</span>
-            <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Vista próximamente</span>
-          </div>
 
           {project.badge && (
             <span style={{
@@ -222,10 +240,38 @@ function ProjectCard({ project, onClick, index }) {
               ★ {project.badge}
             </span>
           )}
+
+          {/* Hover reveal overlay */}
+          <motion.div
+            style={{
+              position: 'absolute', inset: 0,
+              background: 'linear-gradient(to top, rgba(8,13,20,0.92) 0%, rgba(8,13,20,0.4) 60%, transparent 100%)',
+              display: 'flex', alignItems: 'flex-end',
+              padding: '0.85rem',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: hovering ? 1 : 0 }}
+            transition={{ duration: 0.22 }}
+          >
+            <motion.span
+              style={{
+                fontSize: '0.8rem', fontWeight: 600,
+                color: '#fff', letterSpacing: '0.04em',
+                display: 'flex', alignItems: 'center', gap: '0.35rem',
+              }}
+              initial={{ y: 8, opacity: 0 }}
+              animate={{ y: hovering ? 0 : 8, opacity: hovering ? 1 : 0 }}
+              transition={{ duration: 0.22, delay: 0.05 }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              Ver proyecto
+            </motion.span>
+          </motion.div>
         </div>
 
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          {/* Categoría */}
           <span style={{
             fontSize: '0.68rem', fontWeight: 600, color: 'var(--accent)',
             textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.35rem',
@@ -240,7 +286,6 @@ function ProjectCard({ project, onClick, index }) {
             {project.subtitle}
           </p>
 
-          {/* Bullets resumidos */}
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem', marginBottom: '1rem', flex: 1 }}>
             {project.bullets.slice(0, 3).map((b, i) => (
               <li key={i} style={{ display: 'flex', gap: '0.5rem', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
@@ -250,16 +295,19 @@ function ProjectCard({ project, onClick, index }) {
             ))}
           </ul>
 
-          {/* Footer */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
               {project.tags.slice(0, 3).map(tag => (
                 <span key={tag} className="tag" style={{ fontSize: '0.62rem', padding: '0.15rem 0.45rem' }}>{tag}</span>
               ))}
             </div>
-            <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--accent)', whiteSpace: 'nowrap', marginLeft: '0.5rem' }}>
+            <motion.span
+              style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--accent)', whiteSpace: 'nowrap', marginLeft: '0.5rem' }}
+              animate={{ x: hovering ? 3 : 0 }}
+              transition={{ duration: 0.18 }}
+            >
               Ver más →
-            </span>
+            </motion.span>
           </div>
         </div>
       </motion.article>

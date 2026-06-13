@@ -11,7 +11,7 @@ export default function About() {
         <div className="about-grid">
 
           {/* Foto */}
-          <ScrollReveal>
+          <ScrollReveal direction="left">
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <div style={{ position: 'relative', display: 'inline-block' }}>
                 <div style={{
@@ -44,7 +44,7 @@ export default function About() {
 
           {/* Texto */}
           <div>
-            <ScrollReveal>
+            <ScrollReveal direction="right">
               <p className="section-label">Sobre mí</p>
               <h2 className="section-title">Edgardo Lamas</h2>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>

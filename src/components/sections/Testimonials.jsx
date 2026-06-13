@@ -41,7 +41,7 @@ export default function Testimonials() {
     <section style={{ background: 'var(--bg-primary)', padding: '5rem 0' }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        <ScrollReveal>
+        <ScrollReveal direction="left">
           <p className="section-label">Testimonios</p>
           <h2 className="section-title">Lo que dicen los clientes</h2>
           <p className="section-subtitle">
@@ -55,7 +55,7 @@ export default function Testimonials() {
           gap: '1.5rem',
         }}>
           {testimonials.map((t, i) => (
-            <ScrollReveal key={i} delay={i * 120}>
+            <ScrollReveal key={i} delay={i * 140} direction="up">
               <div className="card" style={{
                 display: 'flex',
                 flexDirection: 'column',

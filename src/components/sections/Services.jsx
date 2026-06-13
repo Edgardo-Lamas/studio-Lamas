@@ -21,7 +21,7 @@ export default function Services() {
     <section id="servicios" style={{ background: 'var(--bg-secondary)', padding: '5rem 0' }}>
       <div className="section-inner" style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        <ScrollReveal>
+        <ScrollReveal direction="left">
           <p className="section-label">Qué hago</p>
           <h2 className="section-title">Qué construyo en Studio Lamas</h2>
           <p className="section-subtitle">
@@ -35,7 +35,7 @@ export default function Services() {
           gap: '1.5rem',
         }}>
           {services.map((service, i) => (
-            <ScrollReveal key={service.id} delay={i * 120}>
+            <ScrollReveal key={service.id} delay={i * 140} direction="up">
               <div className="card card-gold" style={{ height: '100%' }}>
                 <div style={{
                   width: '52px', height: '52px',
