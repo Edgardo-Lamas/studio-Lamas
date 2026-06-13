@@ -138,6 +138,21 @@ body {
   box-shadow: 0 12px 40px rgba(201,162,39,0.15);
 }
 
+/* ── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Framer Motion usa transform/opacity — los dejamos pero desactivamos los floats decorativos */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* ── Secciones ──────────────────────────────────────────── */
 .section-wrapper {
   padding: 5rem 1.5rem;

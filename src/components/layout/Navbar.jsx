@@ -8,6 +8,27 @@ const links = [
   { label: 'Sobre mí', href: '#sobre-mi' },
 ]
 
+const sectionIds = ['proyectos', 'servicios', 'proceso', 'sobre-mi']
+
+function IconMenu() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  )
+}
+
+function IconClose() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  )
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -17,6 +38,22 @@ export default function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Scroll-aware active state via IntersectionObserver
+  useEffect(() => {
+    const observers = []
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(`#${id}`) },
+        { rootMargin: '-50% 0px -45% 0px', threshold: 0 }
+      )
+      obs.observe(el)
+      observers.push(obs)
+    })
+    return () => observers.forEach(o => o.disconnect())
   }, [])
 
   return (
@@ -115,18 +152,18 @@ export default function Navbar() {
         <button
           className="nav-hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menú"
+          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           style={{
             display: 'none',
             background: 'none',
             border: 'none',
             cursor: 'pointer',
             color: '#fff',
-            fontSize: '1.5rem',
             padding: '0.25rem',
+            lineHeight: 0,
           }}
         >
-          {menuOpen ? '✕' : '☰'}
+          {menuOpen ? <IconClose /> : <IconMenu />}
         </button>
       </div>
 

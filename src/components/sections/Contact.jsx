@@ -72,7 +72,10 @@ export default function Contact() {
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                 >
-                  <span style={{ fontSize: '1.1rem' }}>✉</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
                   edgardolamas2000@gmail.com
                 </a>
                 <a
@@ -86,7 +89,9 @@ export default function Contact() {
                   onMouseEnter={e => e.currentTarget.style.color = '#25d366'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                 >
-                  <span style={{ fontSize: '1.1rem' }}>💬</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                  </svg>
                   WhatsApp
                 </a>
                 <a
@@ -100,7 +105,11 @@ export default function Contact() {
                   onMouseEnter={e => e.currentTarget.style.color = '#0077b5'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                 >
-                  <span style={{ fontSize: '1.1rem' }}>💼</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
                   LinkedIn
                 </a>
               </div>
@@ -123,7 +132,7 @@ export default function Contact() {
                   placeholder="Tu nombre"
                   style={inputStyle}
                   onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                  onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+                  onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                 />
               </div>
               <div>
@@ -139,7 +148,7 @@ export default function Contact() {
                   placeholder="tu@email.com"
                   style={inputStyle}
                   onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                  onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+                  onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                 />
               </div>
               <div>
@@ -155,7 +164,7 @@ export default function Contact() {
                   rows={5}
                   style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
                   onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                  onBlur={e => e.target.style.borderColor = '#e5e7eb'}
+                  onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                 />
               </div>
 

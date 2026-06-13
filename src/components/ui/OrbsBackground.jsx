@@ -51,6 +51,9 @@ export default function OrbsBackground() {
     const container = containerRef.current
     if (!container) return
 
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
     const onMouseMove = (e) => {
       const rect = container.getBoundingClientRect()
       mouse.current = {
@@ -61,7 +64,6 @@ export default function OrbsBackground() {
 
     container.addEventListener('mousemove', onMouseMove)
 
-    // Animar parallax con RAF para fluidez
     const animate = () => {
       orbRefs.current.forEach((orb, i) => {
         if (!orb) return
