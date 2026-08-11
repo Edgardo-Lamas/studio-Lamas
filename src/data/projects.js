@@ -55,7 +55,7 @@ export const projects = [
     ],
     tags: ['React', 'Cálculo técnico', 'BIM', 'Ingeniería', 'Export'],
     cta: 'Ver detalle',
-    href: null,
+    href: 'https://criterio-termico.vercel.app',
     image: 'img/capturas/criterio termico/criterio-1.webp',
     video: 'img/projects/criterio-termico.mp4',
     badge: 'BIM Ready',
