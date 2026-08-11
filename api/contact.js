@@ -1,3 +1,13 @@
+// Lo que escribe un desconocido termina dentro del HTML del mail. Sin escapar,
+// puede meter etiquetas y falsear cómo se ve el mensaje que recibís.
+const escapar = (v) =>
+  String(v ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -33,11 +43,11 @@ export default async function handler(req, res) {
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #c9a84c;">Nuevo mensaje desde Studio Lamas</h2>
-            <p><strong>Nombre:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+            <p><strong>Nombre:</strong> ${escapar(name)}</p>
+            <p><strong>Email:</strong> <a href="mailto:${escapar(email)}">${escapar(email)}</a></p>
             <hr style="border: none; border-top: 1px solid #eee; margin: 1rem 0;" />
             <p><strong>Mensaje:</strong></p>
-            <p style="white-space: pre-wrap;">${message}</p>
+            <p style="white-space: pre-wrap;">${escapar(message)}</p>
           </div>
         `,
       }),

@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Secretos. `*.local` ya tapaba .env.local, pero NO .env ni .env.production:
+# sin estas líneas, un .env con la clave de Resend se commitea sin avisar.
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -7,7 +7,13 @@ const SPRING_RING = { damping: 26, stiffness: 200, mass: 0.8 }
 export default function CustomCursor() {
   const [visible, setVisible] = useState(false)
   const [hovered, setHovered] = useState(false)
-  const [isTouch, setIsTouch] = useState(false)
+  // Se resuelve en el primer render, no en un efecto posterior: si arranca en
+  // false, en el celular el cursor de escritorio alcanza a dibujarse y recién
+  // después desaparece — se ve como un parpadeo.
+  const [isTouch] = useState(
+    () => typeof window !== 'undefined' &&
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  )
 
   const mx = useMotionValue(-200)
   const my = useMotionValue(-200)
@@ -18,10 +24,7 @@ export default function CustomCursor() {
   const ringY = useSpring(my, SPRING_RING)
 
   useEffect(() => {
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-      setIsTouch(true)
-      return
-    }
+    if (isTouch) return
 
     const move = (e) => {
       mx.set(e.clientX)
@@ -57,7 +60,7 @@ export default function CustomCursor() {
       document.removeEventListener('mouseleave', hide)
       document.removeEventListener('mouseenter', show)
     }
-  }, [visible])
+  }, [visible, isTouch, mx, my])
 
   if (isTouch) return null
 
