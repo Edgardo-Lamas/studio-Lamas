@@ -38,6 +38,17 @@
 /* ── Reset y base ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: auto; } /* Lenis maneja el scroll suave */
+
+/* Las animaciones de entrada (whileInView) arrancan corridas 40px a la derecha.
+   Hasta que cada sección entra en pantalla, ese corrimiento ensancha la página
+   y en el celular se puede arrastrar de costado. Se recorta acá.
+   `clip` no crea un contenedor de scroll (no rompe sticky ni Lenis);
+   `hidden` queda de respaldo para navegadores que no entiendan `clip`. */
+html, body {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-primary);

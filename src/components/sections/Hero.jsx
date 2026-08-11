@@ -50,8 +50,11 @@ function TextRotator() {
     return () => clearInterval(t)
   }, [])
 
+  // El minWidth reserva el ancho de la palabra más larga para que el renglón no
+  // salte al rotar. En el celular 16ch supera el ancho de la pantalla (letra
+  // grande), así que se topea contra el contenedor.
   return (
-    <span style={{ display: 'inline-block', minWidth: '16ch', verticalAlign: 'bottom' }}>
+    <span style={{ display: 'inline-block', minWidth: 'min(16ch, 100%)', verticalAlign: 'bottom' }}>
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
@@ -394,15 +397,18 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
+        /* minmax(0, 1fr) y no 1fr: un track "1fr" se niega a achicarse por
+           debajo del contenido más ancho que tenga adentro, y entonces la
+           columna se pasa del contenedor en vez de ajustarse. */
         .hero-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 3rem;
           align-items: center;
         }
         @media (max-width: 768px) {
           .hero-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 2rem;
           }
           .hero-grid h1 {
