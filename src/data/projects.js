@@ -14,7 +14,7 @@ export const projects = [
     tags: ['React', 'Supabase', 'IA', 'RAG', 'SaaS', 'PostgreSQL'],
     cta: 'Ver detalle',
     href: 'https://edgardo-lamas.github.io/Alcance-Legal-Penal/',
-    image: 'img/capturas/alcace-legal-penal/alcance-1.png',
+    image: 'img/capturas/alcace-legal-penal/alcance-1.webp',
     badge: null,
     description:
       'Plataforma SaaS que permite a abogados penalistas consultar legislación y jurisprudencia argentina mediante inteligencia artificial. El sistema procesa preguntas en lenguaje natural y devuelve respuestas fundamentadas con referencias legales reales, usando RAG sobre una base de conocimiento actualizada.',
@@ -35,7 +35,7 @@ export const projects = [
     tags: ['React', 'EdTech', 'IA', 'LegalTech', 'Formación'],
     cta: 'Ver detalle',
     href: 'https://legal-intelligence-system-wine.vercel.app/',
-    image: 'img/capturas/legal-intelligence-systems/legal-1.png',
+    image: 'img/capturas/legal-intelligence-systems/legal-1.webp',
     badge: 'IA aplicada',
     description:
       'Plataforma educativa especializada en inteligencia artificial para abogados. Estructura un recorrido de formación completo — desde fundamentos de IA hasta automatización de la práctica jurídica — con módulos interactivos, visualizaciones de contenido y herramientas diseñadas para el ejercicio profesional real.',
@@ -56,7 +56,7 @@ export const projects = [
     tags: ['React', 'Cálculo técnico', 'BIM', 'Ingeniería', 'Export'],
     cta: 'Ver detalle',
     href: null,
-    image: 'img/capturas/criterio termico/criterio-1.png',
+    image: 'img/capturas/criterio termico/criterio-1.webp',
     video: 'img/projects/criterio-termico.mp4',
     badge: 'BIM Ready',
     description:
@@ -77,7 +77,7 @@ export const projects = [
     tags: ['React', 'Supabase', 'Dashboard', 'Gestión', 'PostgreSQL'],
     cta: 'Ver detalle',
     href: null,
-    image: 'img/capturas/sabri/sabr-1.png',
+    image: 'img/capturas/sabri/sabr-1.webp',
     badge: null,
     description:
       'Sistema de gestión a medida que reemplazó el flujo operativo basado en planillas Excel de una PyME. Centraliza clientes, pedidos, stock y operaciones en una sola aplicación web con roles y permisos, y un dashboard de métricas en tiempo real que permite tomar decisiones con información actualizada.',
@@ -98,7 +98,7 @@ export const projects = [
     tags: ['React', 'Geolocalización', 'API', 'E-commerce', 'EdTech'],
     cta: 'Ver detalle',
     href: null,
-    image: 'img/capturas/sabiduria/captura-1.png',
+    image: 'img/capturas/sabiduria/captura-1.webp',
     video: 'img/capturas/sabiduria/grabacion.mov',
     badge: null,
     description:
@@ -120,7 +120,7 @@ export const projects = [
     tags: ['HTML', 'CSS', 'JavaScript', 'GA4', 'E-commerce'],
     cta: 'Ver sitio',
     href: 'https://edgardo-lamas.github.io/LaNik/',
-    image: 'img/capturas/LaNik/lanik-1.png',
+    image: 'img/capturas/LaNik/lanik-1.webp',
     video: 'img/capturas/LaNik/LaNik.mp4',
     badge: null,
     description:

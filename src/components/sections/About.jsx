@@ -23,7 +23,7 @@ export default function About() {
                   boxShadow: '0 0 60px rgba(74,127,165,0.15), 0 0 120px rgba(201,168,76,0.08)',
                 }}>
                   <img
-                    src={`${base}img/capturas/Edgardo/lamas.png`}
+                    src={`${base}img/capturas/Edgardo/lamas.webp`}
                     alt="Edgardo Lamas"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
