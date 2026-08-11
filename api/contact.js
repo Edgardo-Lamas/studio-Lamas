@@ -26,6 +26,9 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: 'onboarding@resend.dev',
         to: 'lamasedgardo2024@gmail.com',
+        // Sin esto, "Responder" le contesta a Resend en vez de al cliente y hay
+        // que copiar la dirección a mano desde el cuerpo del mensaje.
+        reply_to: email,
         subject: `Nuevo contacto de ${name} — Studio Lamas`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
