@@ -95,7 +95,7 @@ export default function Contact() {
                   WhatsApp
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/edgardo-lamas-392668273/"
+                  href="https://www.linkedin.com/in/edgardo-lamas-dev/"
                   target="_blank" rel="noopener noreferrer"
                   style={{
                     display: 'flex', alignItems: 'center', gap: '0.75rem',
