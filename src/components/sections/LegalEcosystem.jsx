@@ -11,10 +11,10 @@ const nodes = [
     icon: '⚙',
   },
   {
-    label: 'Consulta con IA',
+    label: 'Analiza con IA',
     name: 'Alcance Legal Penal',
-    desc: 'SaaS de consulta jurídica con RAG sobre legislación y jurisprudencia penal argentina.',
-    href: 'https://edgardo-lamas.github.io/Alcance-Legal-Penal/',
+    desc: 'Lee el expediente en el MEV y devuelve la estrategia de defensa con cita textual, sobre el CPP de la Provincia.',
+    href: 'https://alcance-legal-penal.vercel.app',
     color: 'var(--accent)',
     icon: '⚖',
   },
